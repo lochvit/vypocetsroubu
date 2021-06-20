@@ -1,0 +1,53 @@
+﻿<Window x:Class="Kalkulacka.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MOPOSOFT Výpočet trapézového šroubu" Height="310.912" Width="637.925" MinWidth="388" MinHeight="134" WindowStartupLocation="CenterScreen" Icon="kalkulacka.ico">
+    <Grid Margin="0" RenderTransformOrigin="0.505,0.489">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="132"/>
+            <ColumnDefinition Width="159"/>
+            <ColumnDefinition Width="339"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Vypočítej M" VerticalAlignment="Top" Name="vypocitejButton" Click="vypocitejButton_Click" Margin="10,118,241,0" Width="88" Height="20" RenderTransformOrigin="1.214,0.75" Grid.Column="2"/>
+        <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10,29,0,0" SelectedIndex="0" Name="operaceComboBox" Height="22" Grid.Column="2" Width="88">
+            <ComboBoxItem Content="Tr 16 x 4"/>
+            <ComboBoxItem Content="Tr 20 x 4"/>
+            <ComboBoxItem Content="Tr 24 x 5"/>
+            <ComboBoxItem Content="Tr 28 x 5"/>
+            <ComboBoxItem Content="Tr 30 x 6"/>
+            <ComboBoxItem Content="Tr 32 x 6"/>
+            <ComboBoxItem Content="Tr 36 x 6"/>
+            <ComboBoxItem Content="Tr 40 x 7"/>
+            <ComboBoxItem Content="Tr 44 x 7"/>
+            <ComboBoxItem Content="Tr 50 x 8"/>
+            <ComboBoxItem Content="Tr 55 x 9"/>
+            <ComboBoxItem Content="Tr 60 x 9"/>
+        </ComboBox>
+        <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" Name="vysledekTextBlock" Margin="76,172,0,0"  Width="79" Height="26" Grid.Column="2" Background="White" Foreground="Black">0</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Height="16" Width="66"><Run Text="Síla"/><Run Text=" F"/><Run Text=" [N]"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,55,0,0" TextWrapping="Wrap" Text="Mez kluzu v tahu [MPa]" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Width="97" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Width="97" Height="48"><Run Text="Předběžný"/><Run Text=" "/><Run Text="Ø "/><Run Text="šroubu [mm]"/></TextBlock>
+        <Button Content="Vypočítej Ø" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Width="88" 
+            Click="OnSquareRootClick" Height="20"/>
+        <TextBox x:Name="txtNumber" HorizontalAlignment="Left" Height="23" Margin="10,28,0,0" Text="" VerticalAlignment="Top" Width="88"/>
+        <TextBox x:Name="txtNumber2" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" Text="" VerticalAlignment="Top" Width="88"/>
+        <Image Grid.Column="2" HorizontalAlignment="Left" Height="52" Margin="163,218,0,0" VerticalAlignment="Top" Width="166" Source="moposoft.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Grid.Column="2" Height="16" Width="78" Text="Výběr závitu"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Height="16" Width="52" Grid.Column="2"><Run Text="Síla"/><Run Text=" F"/><Run Text=" [N]"/></TextBlock>
+        <TextBox x:Name="txtNumber4" HorizontalAlignment="Left" Height="23" Margin="10,77,0,0" Text="" VerticalAlignment="Top" Width="88" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Height="51" Width="52" Grid.Column="2"><Run Text="Potřebný moment [N.m]"/><Run Text=" "/></TextBlock>
+        <Button Content="O programu" VerticalAlignment="Top" Click="AboutClick" Margin="19,213,26,0" Height="20" RenderTransformOrigin="1.214,0.75" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="150,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Grid.Column="2" Height="16" Width="107"><Run Text="Napětí tlak"/><Run Text=" [MPa]"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="150,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Grid.Column="2" Height="16" Width="107"><Run Text="Napětí krut"/><Run Text=" [MPa]"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="256,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Grid.Column="2" Height="16" Width="73"><Run Text="Max 65 "/><Run Text="MPa"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="256,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.89,2.25" Grid.Column="2" Height="16" Width="68"><Run Text="Max 40"/><Run Text=" MPa"/></TextBlock>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="160" Margin="19,28,0,0" VerticalAlignment="Top" Width="139" Source="sroub4.png"/>
+        <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="vysledekTextBlock_tlak" Margin="163,40,0,0"  Width="79" Height="26" Grid.Column="2" Background="White" Foreground="Black"><Run Text="0"/></TextBlock>
+        <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="vysledekTextBlock_krut" Margin="163,102,0,0"  Width="79" Height="26" Grid.Column="2" Background="White" Foreground="Black"><Run Text="0"/></TextBlock>
+        <TextBlock  VerticalAlignment="Top" HorizontalAlignment="Left" x:Name="vysledekTextBlock_prumer" Margin="28,168,0,0"  Width="79" Height="26" Background="White" Foreground="Black"><Run Text="0"/></TextBlock>
+    </Grid>
+</Window>
